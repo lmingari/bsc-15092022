@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="L. Mingari">
+  <meta name="author" content="Marta Pienkowska">
+  <meta name="author" content="Marisol Monterrubio">
+  <meta name="author" content="Josep de la Puente">
+  <title>Ensemble of earthquake simulations</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Ensemble of earthquake simulations</h1>
+  <p class="author">L. Mingari</p>
+  <p class="author">Marta Pienkowska</p>
+  <p class="author">Marisol Monterrubio</p>
+  <p class="author">Josep de la Puente</p>
+  <p class="date">15/09/2022</p>
+</section>
+
+<section>
+<section id="clustering-tohoku" class="title-slide slide level1">
+<h1>Clustering: Tohoku</h1>
+<p>The 2011 Tōhoku earthquake and tsunami occurred on 11 March 2011. The
+magnitude 9.0–9.1 (Mw) undersea megathrust earthquake had an epicenter
+in the Pacific Ocean, 72 km east of the Oshika Peninsula of the Tōhoku
+region, and lasted approximately six minutes, causing a tsunami.</p>
+<p><a
+href="https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami">Reference</a></p>
+</section>
+<section id="tohoku-distance-matrix" class="slide level2">
+<h2>Tohoku: Distance matrix</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Traditional DBSCAN clustering… <img
+data-src="figures/distance_matrix_tohoku_1step.png" /></p>
+</div><div class="column" style="width:50%;">
+<p>Two-step clustering… <img
+data-src="figures/distance_matrix_tohoku_2step.png" /></p>
+</div>
+</div>
+<p>Note: DBSCAN - Density-Based Spatial Clustering of Applications with
+Noise. Finds core samples of high density and expands clusters from
+them. Good for data which contains clusters of similar density.</p>
+</section>
+<section id="tohoku-clusters-for-nodal-plane-1" class="slide level2">
+<h2>Tohoku: Clusters for nodal plane 1</h2>
+<p><img data-src="figures/areas1_tohoku.png" /></p>
+</section>
+<section id="tohoku-kagan-angle-contours" class="slide level2">
+<h2>Tohoku: Kagan angle contours</h2>
+<p><img data-src="figures/kagan-contours.png" /></p>
+</section></section>
+<section>
+<section id="clustering-samos" class="title-slide slide level1">
+<h1>Clustering: Samos</h1>
+<p>An earthquake with a moment magnitude of 6.9–7.0 occurred on 30
+October 2020 about 14 km northeast of the Greek island of Samos.</p>
+<p>The Turkish city İzmir, 70 km northeast, was severely affected. One
+hundred and seventeen people died in İzmir Province while an additional
+1,034 were injured.</p>
+<p><a
+href="https://en.wikipedia.org/wiki/2020_Aegean_Sea_earthquake">Reference</a></p>
+</section>
+<section id="samos-distance-matrix" class="slide level2">
+<h2>Samos: Distance matrix</h2>
+<p><img src="figures/distance_matrix_samos.png" width="80%"></p>
+</section>
+<section id="samos-clusters-for-nodal-plane-1" class="slide level2">
+<h2>Samos: Clusters for nodal plane 1</h2>
+<p><img data-src="figures/areas1.png" /></p>
+</section>
+<section id="samos-clusters-for-nodal-plane-2" class="slide level2">
+<h2>Samos: Clusters for nodal plane 2</h2>
+<p><img data-src="figures/areas2.png" /></p>
+</section></section>
+<section>
+<section id="sensitivity-analysis" class="title-slide slide level1">
+<h1>Sensitivity analysis</h1>
+<p>Variables to be perturbed:</p>
+<ul>
+<li><span class="fragment highlight-red">Focal mechanism parameters
+(strike,dip,rake)</span></li>
+<li>Source depth</li>
+<li>Moment magnitude (Mw)</li>
+<li>Location (latitude,longitude)</li>
+</ul>
+</section>
+<section id="sampling-from-a-multivariate-normal-distribution"
+class="slide level2">
+<h2>Sampling from a multivariate normal distribution</h2>
+<p><span class="math display">\[ f_{\mathbf {X} }(x_{1},\ldots
+,x_{k})={\frac {\exp \left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol
+{\mu }})^{\mathrm {T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x}
+}-{\boldsymbol {\mu }})\right)}{\sqrt {(2\pi )^{k}|{\boldsymbol {\Sigma
+}}|}}} \]</span></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mean vector</th>
+<th>Covariance matrix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math display">\[\boldsymbol{\mu} = (113.94, 47.86,
+-73.64)\]</span></td>
+<td><span class="math display">\[\Sigma = \begin{pmatrix}
+214.67&amp;61.00&amp;255.67\\-&amp;76.48&amp;80.57\\-&amp;-&amp;337.62
+\end{pmatrix} \]</span></td>
+</tr>
+</tbody>
+</table>
+<p>Correlation matrix: <span class="math display">\[\rho =
+\begin{pmatrix}
+1.0&amp;0.48&amp;0.95\\-&amp;1.0&amp;0.5\\-&amp;-&amp;1.0 \end{pmatrix}
+\]</span></p>
+</section>
+<section id="sensitivity-analysis-for-single-cluster"
+class="slide level2">
+<h2>Sensitivity analysis for single cluster</h2>
+<p><img data-src="figures/areas_sampling.png" /></p>
+</section>
+<section id="ensemble-kagan-angle" class="slide level2">
+<h2>Ensemble Kagan angle</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>definition… <span class="math display">\[ \overline {d} = \frac{1}{N}
+\sum_i^N d_i \]</span> where <span class="math inline">\(d_i\)</span> is
+the minimum Kagan angle between the i-th sample and the remaining
+samples: <span class="math display">\[d_i = \min_{j,j\ne i}
+\theta_{ij}\]</span></p>
+</div><div class="column" style="width:60%;">
+<p>results for 40 simulations… <img
+data-src="figures/min_kagan_angle.png" /></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="ensemble-simulations" class="title-slide slide level1">
+<h1>Ensemble simulations</h1>
+
+</section>
+<section id="does-the-distribution-converge" class="slide level2">
+<h2>Does the distribution converge?</h2>
+<video data-autoplay src="figures/histogram.mp4" width="70%">
+</video>
+</section>
+<section id="entropy-for-different-ensemble-sizes" class="slide level2">
+<h2>Entropy for different ensemble sizes</h2>
+<p><img data-src="figures/entropy-kagan_angle.png" /></p>
+</section>
+<section id="comparison-with-observations" class="slide level2">
+<h2>Comparison with observations</h2>
+<p><img data-src="figures/angles.png" /></p>
+</section></section>
+<section id="conclusions" class="title-slide slide level1">
+<h1>Conclusions</h1>
+<p>We showed here:</p>
+<ul>
+<li>A method for…</li>
+</ul>
+</section>
+
+<section id="thanks" class="title-slide slide level1"
+data-transition="zoom">
+<h1 data-transition="zoom">Thanks</h1>
+<img src="figures/questions.png" width="40%">
+<style>
+    .reveal {
+        font-size: 20px;
+    }
+</style>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'convex',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,5 +1,5 @@
 BUILDDIR=.
-FILENAME=main
+FILENAME=index
 
 html:
 	mkdir $(BUILDDIR) -p

@@ -1,19 +1,48 @@
 ---
 author: 
-- L. Mingari
-- Marta Pienkowska
-- Marisol Monterrubio
-- Josep de la Puente
+    - L. Mingari$^1$
+    - Marta Pienkowska$^2$
+    - Marisol Monterrubio$^1$
+    - Josep de la Puente$^1$
+institute: 
+    - $^1$Barcelona Supercomputing Center
+    - $^2$ETH Zurich
 title: Ensemble of earthquake simulations
 description: Internal group meeting
-date: 15/09/2022
+date: 15 September 2022
 tags: presentation
+header-includes: |
+    <style>
+        .reveal {
+            font-size: 20px;
+        }
+
+        .author { font-size:30px; font-weight: bold }
+        .date { color:#993333; padding-top:100px}
+        .left { float: left; }
+        .right { float: right; }
+        .under {text-decoration:underline}
+    </style>
 ---
 
 # Clustering: Tohoku
 The 2011 Tōhoku earthquake and tsunami occurred on 11 March 2011. The magnitude 9.0–9.1 (Mw) undersea megathrust earthquake had an epicenter in the Pacific Ocean, 72 km east of the Oshika Peninsula of the Tōhoku region, and lasted approximately six minutes, causing a tsunami.
 
-[Reference](https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami)
+[Reference](https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami){.right}<br>
+
+<hr />
+[DBSCAN - Density-Based Spatial Clustering of Applications with Noise]{.under}<br>
+Finds core samples of high density and expands clusters from them. Good for data which contains clusters of similar density.
+
+[Configuration block:]{.left}<br>
+```python
+fname_catalogue  = SPUD_QUAKEML_bundle_2022-06-16T11.48.12.xml
+maxDistance      = 120
+epicentre_lat    = 38.322
+epicentre_lon    = 142.369
+eps              = [0.13,0.20]
+min_samples      = 4
+```
 
 ## Tohoku: Distance matrix
 
@@ -28,8 +57,6 @@ Two-step clustering...
 :::
 ::::::::::::::
 
-Note: DBSCAN - Density-Based Spatial Clustering of Applications with Noise. Finds core samples of high density and expands clusters from them. Good for data which contains clusters of similar density.
-
 ## Tohoku: Clusters for nodal plane 1
 ![](figures/areas1_tohoku.png)
 
@@ -39,9 +66,20 @@ Note: DBSCAN - Density-Based Spatial Clustering of Applications with Noise. Find
 # Clustering: Samos
 An earthquake with a moment magnitude of 6.9–7.0 occurred on 30 October 2020 about 14 km northeast of the Greek island of Samos.
 
-The Turkish city İzmir, 70 km northeast, was severely affected. One hundred and seventeen people died in İzmir Province while an additional 1,034 were injured. 
+The Turkish city İzmir, 70 km northeast, was severely affected. <span class="fragment highlight-red">One hundred and seventeen people died</span> in İzmir Province while an additional 1,034 were injured. 
 
-[Reference](https://en.wikipedia.org/wiki/2020_Aegean_Sea_earthquake)
+[Reference](https://en.wikipedia.org/wiki/2020_Aegean_Sea_earthquake){.right}<br>
+
+<hr />
+[Configuration block:]{.left}<br>
+```python
+fname_catalogue  = Mediterranean_SPUD_QUAKEML_bundle_2021-07-30T09.51.41.xml
+maxDistance      = 90
+epicentre_lat    = 37.918
+epicentre_lon    = 26.790
+eps              = [0.15, 0.30]
+min_samples      = 2
+```
 
 ## Samos: Distance matrix
 
@@ -96,11 +134,19 @@ results for 40 simulations...
 
 # Ensemble simulations
 
-## Does the distribution converge?
-<video data-autoplay src="figures/histogram.mp4" width="70%"></video>
+* Are we over- or sub-sampling the cluster?
+* How many members are required to properly sample the parameter space?
+* Are the distributions converging?
+* What are the most sensitive variables?
 
 ## Entropy for different ensemble sizes
 ![](figures/entropy-kagan_angle.png)
+
+## Is the distribution converging?
+<video data-autoplay src="figures/histogram.mp4" width="70%"></video>
+
+## What about low-order moments?
+To be done
 
 ## Comparison with observations
 ![](figures/angles.png)
@@ -112,8 +158,5 @@ We showed here:
 
 # Thanks {data-transition="zoom"}
 <img src="figures/questions.png" width="40%">
-<style>
-    .reveal {
-        font-size: 20px;
-    }
-</style>
+
+

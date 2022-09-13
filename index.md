@@ -22,6 +22,12 @@ header-includes: |
         .left { float: left; }
         .right { float: right; }
         .under {text-decoration:underline}
+        .block {
+             background: #EEEEEE;
+             border-radius: 15px 50px;
+             border: 2px solid #993333;
+             padding: 1px;
+        }
     </style>
 ---
 
@@ -31,8 +37,10 @@ The 2011 Tōhoku earthquake and tsunami occurred on 11 March 2011. The magnitude
 [Reference](https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami){.right}<br>
 
 <hr />
-[DBSCAN - Density-Based Spatial Clustering of Applications with Noise]{.under}<br>
+::: block
+<p>[DBSCAN - Density-Based Spatial Clustering of Applications with Noise]{.under}</p>
 Finds core samples of high density and expands clusters from them. Good for data which contains clusters of similar density.
+:::
 
 [Configuration block:]{.left}<br>
 ```python
@@ -40,7 +48,7 @@ fname_catalogue  = SPUD_QUAKEML_bundle_2022-06-16T11.48.12.xml
 maxDistance      = 120
 epicentre_lat    = 38.322
 epicentre_lon    = 142.369
-eps              = [0.13,0.20]
+eps              = [0.13,0.20] #15.6 24.0
 min_samples      = 4
 ```
 
@@ -77,7 +85,7 @@ fname_catalogue  = Mediterranean_SPUD_QUAKEML_bundle_2021-07-30T09.51.41.xml
 maxDistance      = 90
 epicentre_lat    = 37.918
 epicentre_lon    = 26.790
-eps              = [0.15, 0.30]
+eps              = [0.15, 0.30] #18.0 36.0
 min_samples      = 2
 ```
 
@@ -146,7 +154,7 @@ results for 40 simulations...
 <video data-autoplay src="figures/histogram.mp4" width="70%"></video>
 
 ## What about low-order moments?
-To be done
+![](figures/SMG-moments.png)
 
 ## Comparison with observations
 ![](figures/angles.png)

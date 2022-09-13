@@ -99,6 +99,12 @@
       .left { float: left; }
       .right { float: right; }
       .under {text-decoration:underline}
+      .block {
+           background: #EEEEEE;
+           border-radius: 15px 50px;
+           border: 2px solid #993333;
+           padding: 1px;
+      }
   </style>
 </head>
 <body>
@@ -133,17 +139,21 @@ region, and lasted approximately six minutes, causing a tsunami.</p>
 href="https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami"
 class="right">Reference</a><br></p>
 <hr />
-<p><span class="under">DBSCAN - Density-Based Spatial Clustering of
-Applications with Noise</span><br> Finds core samples of high density
-and expands clusters from them. Good for data which contains clusters of
-similar density.</p>
+<div class="block">
+<p>
+<span class="under">DBSCAN - Density-Based Spatial Clustering of
+Applications with Noise</span>
+</p>
+<p>Finds core samples of high density and expands clusters from them.
+Good for data which contains clusters of similar density.</p>
+</div>
 <p><span class="left">Configuration block:</span><br></p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fname_catalogue  <span class="op">=</span> SPUD_QUAKEML_bundle_2022<span class="op">-</span><span class="dv">0</span><span class="er">6</span><span class="op">-</span><span class="dv">16</span><span class="er">T11</span><span class="fl">.48.12</span>.xml</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>maxDistance      <span class="op">=</span> <span class="dv">120</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>epicentre_lat    <span class="op">=</span> <span class="fl">38.322</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>epicentre_lon    <span class="op">=</span> <span class="fl">142.369</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>eps              <span class="op">=</span> [<span class="fl">0.13</span>,<span class="fl">0.20</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>eps              <span class="op">=</span> [<span class="fl">0.13</span>,<span class="fl">0.20</span>] <span class="co">#15.6 24.0</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>min_samples      <span class="op">=</span> <span class="dv">4</span></span></code></pre></div>
 </section>
 <section id="tohoku-distance-matrix" class="slide level2">
@@ -184,7 +194,7 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a hr
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>maxDistance      <span class="op">=</span> <span class="dv">90</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>epicentre_lat    <span class="op">=</span> <span class="fl">37.918</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>epicentre_lon    <span class="op">=</span> <span class="fl">26.790</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>eps              <span class="op">=</span> [<span class="fl">0.15</span>, <span class="fl">0.30</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>eps              <span class="op">=</span> [<span class="fl">0.15</span>, <span class="fl">0.30</span>] <span class="co">#18.0 36.0</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>min_samples      <span class="op">=</span> <span class="dv">2</span></span></code></pre></div>
 </section>
 <section id="samos-distance-matrix" class="slide level2">
@@ -287,7 +297,7 @@ space?</li>
 </section>
 <section id="what-about-low-order-moments" class="slide level2">
 <h2>What about low-order moments?</h2>
-<p>To be done</p>
+<p><img data-src="figures/SMG-moments.png" /></p>
 </section>
 <section id="comparison-with-observations" class="slide level2">
 <h2>Comparison with observations</h2>

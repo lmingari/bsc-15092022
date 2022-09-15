@@ -150,11 +150,16 @@ results for 40 simulations...
 ## Entropy for different ensemble sizes
 ![](figures/entropy-kagan_angle.png)
 
+## Entropy for different ensemble sizes
+![](figures/entropy-single.png){width=50%}
+
 ## Is the distribution converging?
 <video data-autoplay src="figures/histogram.mp4" width="70%"></video>
 
 ## What about low-order moments?
 ![](figures/SMG-moments.png)
+
+[Very preliminar results]{.under}
 
 ## Comparison with observations
 ![](figures/angles.png)
@@ -162,7 +167,11 @@ results for 40 simulations...
 # Conclusions
 We showed here:
 
-* A method for...
+* It is possible to classify historical data measuring the pairwise distance between samples in terms of the Kagan angle
+* By taking into account correlations between strike, dip and rake we were able to reduce significantly the sampled parameter space
+* Using the computational resources typically available in HPC center, we cannot expect convergence of the probability distribution. However, it is probably possible for low order moments with a reasonable ensemble size.
+* Numerical simulations are highly sensitive to changes in Focal mechanism parameters (strike,dip,rake), source depth, and moment magnitude (strong non-linear dynamics involved).
+* Perturbation in the horizontal location (latitude and longitude) had a marginal effect (a simple translation).
 
 # Thanks {data-transition="zoom"}
 <img src="figures/questions.png" width="40%">
